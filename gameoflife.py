@@ -5,26 +5,26 @@ class GameofLife():
     def game(self, matrix):
         matrix_shape = matrix.shape
         expand_matrix = np.pad(matrix, ((1, 1), (1, 1)), 'constant')
-        result = []
 
-        
         def evolve(m):
             neigh = m[0, 0] + m[0, 1] + m[0, 2] + m[1, 0] + m[1, 2] + m[2, 0] + m[2, 1] + m[2, 2]
             if neigh == 3:
-                result = 1
+                center = 1
             elif neigh == 2:
-                result = m[1, 1]
+                center = m[1, 1]
             else:
-                result = 0
-            return result
+                center = 0
+            return center
+
+        finalresult = []
         for i in range(1, matrix_shape[0]+1):
             row = []
             for j in range(1, matrix_shape[1]+1):
                 new_cell = expand_matrix[i-1:i+2, j-1:j+2]
                 center = evolve(new_cell)
                 row.append(center)
-            result.append(row)
-        return result
+            finalresult.append(row)
+        return finalresult
 
 
 s = GameofLife()
@@ -37,3 +37,4 @@ matrix[2, 2] = 1
 matrix[3, 1] = 1
 matrix[3, 2] = 1
 result = s.game(matrix)
+print(np.array(result))
