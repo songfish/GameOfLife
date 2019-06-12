@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+
 class GameofLife():
 
     def evolve(self, m):
@@ -26,11 +28,16 @@ class GameofLife():
 
     def game(self, matrix, T):
         finalresult = []
+        plt.ion()
         for t in range(T):
             matrix = self.oneStep(matrix)
             finalresult.append(matrix)
+            plt.imshow(matrix, interpolation='nearest', cmap='gray')
+            plt.axis('off')
+            plt.pause(0.01)
+        plt.ioff()
+        plt.show()
         return finalresult
-
 
 s = GameofLife()
 matrix = np.zeros([20, 20], dtype=int)
@@ -41,6 +48,7 @@ matrix[2, 0] = 1
 matrix[2, 2] = 1
 matrix[3, 1] = 1
 matrix[3, 2] = 1
-T = 20
+T = 50
 result = s.game(matrix, T)
 print(np.array(result))
+
