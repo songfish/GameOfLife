@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+
 
 class GameofLife():
 
@@ -39,15 +41,19 @@ class GameofLife():
         plt.show()
         return finalresult
 
-s = GameofLife()
-matrix = np.zeros([20, 20], dtype=int)
-matrix[0, 1] = 1
-matrix[1, 0] = 1
-matrix[1, 2] = 1
-matrix[2, 0] = 1
-matrix[2, 2] = 1
-matrix[3, 1] = 1
-matrix[3, 2] = 1
-T = 50
-result = s.game(matrix, T)
+
+if __name__ == '__main__':
+    s = GameofLife()
+    matrix = np.zeros([20, 20], dtype=int)
+    matrix[0, 1] = 1
+    matrix[1, 0] = 1
+    matrix[1, 2] = 1
+    matrix[2, 0] = 1
+    matrix[2, 2] = 1
+    matrix[3, 1] = 1
+    matrix[3, 2] = 1
+    T = 50
+    result = s.game(matrix, T)
+
+
 
