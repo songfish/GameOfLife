@@ -1,13 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from cell import *
-import sys
-#coding=utf-8
 
 
 class GameofLife(object):
 
-    def oneStep(self, matrix):
+    def one_step(self, matrix):
         expand_matrix, matrix_shape = self.pad_matrix(matrix)
         oneStepResult = []
         for i in range(1, matrix_shape[0]+1):
@@ -28,7 +26,7 @@ class GameofLife(object):
         finalresult = []
         plt.ion()
         for t in range(T):
-            matrix = self.oneStep(matrix)
+            matrix = self.one_step(matrix)
             finalresult.append(matrix)
             plt.imshow(matrix, interpolation='nearest', cmap='gray')
             plt.axis('off')

@@ -1,4 +1,3 @@
-from gameoflife import *
 from cell import *
 import numpy as np
 import unittest
@@ -28,12 +27,6 @@ class TestGameFunc(unittest.TestCase):
     def more_neighbors(self, s):
         m4 = np.array([[1, 0, 1], [0, 0, 1], [0, 0, 1]])
         self.assertEqual(0, s.evolve(m4))
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
