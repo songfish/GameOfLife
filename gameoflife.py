@@ -50,5 +50,4 @@ matrix[3, 1] = 1
 matrix[3, 2] = 1
 T = 50
 result = s.game(matrix, T)
-print(np.array(result))
 
