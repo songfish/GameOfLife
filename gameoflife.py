@@ -39,24 +39,45 @@ class GameofLife(object):
 
 
 if __name__ == '__main__':
-    rlefile_path = './rle/104p177.rle'
-    Cshape, pos, T, rH, rV, trim, tp, pattern = readRLE_New(rlefile_path)
-    matrix = 1*(readPattern(pattern, Cshape, pos, rH=rH, rV=rV, tp=tp))
+    screen_row = 100
+    screen_column = 100
+    position = 50
+    T = 50
+    interval = 0.05
+    rlefile_path = './rle/blinker.rle'  # 信号灯
+    # rlefile_path = './rle/five.rle'
+    # rlefile_path = './rle/max.rle'
+    # rlefile_path = './rle/puffer1.rle'
+    # rlefile_path = './rle/gosperglidergun.rle'
+    # rlefile_path = './rle/ten.rle'
+    # rlefile_path = './rle/spaceships.rle'
+    # rlefile_path = './rle/exploder.rle'
+    # rlefile_path = './rle/beehiveplus.rle'
+
+
+
+    Cshape, pos, rH, rV, tp, pattern = readRLE_New(rlefile_path)
+    B = 1*(readPattern(pattern, Cshape, pos, rH=rH, rV=rV, tp=tp))
     s = GameofLife()
-    # screen_row = int(input("请输入画布的行数："))
-    # screen_column = int(input("\n请输入画布的列数："))
-    # matrix = np.zeros([screen_row, screen_column], dtype=int)
-    # cell_number = int(input('\n请输入存活细胞数量:'))
-    # print('\n请输入存活细胞坐标，从1开始计数，如 1 1:')
-    # for n in range(cell_number):
-    #     i, j = map(int, input('第 {} 个坐标:'.format(n+1)).split())
-    #     matrix[i-1, j-1] = 1
-    # T = int(input("\n请输入迭代次数："))
-    # interval = float(input('\n请输入停顿时间，如0.01：'))
-    T=20
-    interval=0.3
-    # print("\n您所输入的初始状态为：\n{}".format(matrix))
+    matrix = np.zeros([screen_row, screen_column], dtype=int)
+    for i in range(B.shape[0]):
+        for j in range(B.shape[1]):
+            matrix[position+i, position+j] = B[i, j]
     result = s.game(matrix, T, interval)
 
-
+# if __name__ == '__main__':
+#     s = GameofLife()
+#     screen_row = int(input("请输入画布的行数："))
+#     screen_column = int(input("\n请输入画布的列数："))
+#     matrix = np.zeros([screen_row, screen_column], dtype=int)
+#     cell_number = int(input('\n请输入存活细胞数量:'))
+#     print('\n请输入存活细胞坐标，从1开始计数，如 1 1:')
+#     for n in range(cell_number):
+#         i, j = map(int, input('第 {} 个坐标:'.format(n+1)).split())
+#         matrix[i-1, j-1] = 1
+#     T = int(input("\n请输入迭代次数："))
+#     interval = float(input('\n请输入停顿时间，如0.01：'))
+#
+#     print("\n您所输入的初始状态为：\n{}".format(matrix))
+#     result = s.game(matrix, T, interval)
 

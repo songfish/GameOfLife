@@ -11,8 +11,6 @@ def readRLE_New(filename):
     position = (0,0)
     rH = False
     rV = False
-    trim = False
-    T = 0
     tp = False
     while True:
         l = f.readline()
@@ -36,7 +34,7 @@ def readRLE_New(filename):
         else:
             s = s + l[:-1]   # To remove EOL
     f.close()
-    return (Cshape,position,T,rH,rV,trim,tp,s)
+    return (Cshape,position,rH,rV,tp,s)
 
 
 def readPattern(pattern,Cshape,position,rH,rV,tp):
